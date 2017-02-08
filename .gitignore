@@ -15,3 +15,7 @@ hs_err_pid*
 /target/*
 /.idea
 teiid-embedded-object-translator.iml
+/target/
+.classpath
+.project
+.settings

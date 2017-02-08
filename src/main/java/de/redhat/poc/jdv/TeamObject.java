@@ -23,14 +23,12 @@ public class TeamObject {
     return players;
   }
 
+  public String[] getPlayersAsArray() {
+      return players.toArray(new String[players.size()]);
+  }
+  
   public void setPlayers(List<String> players)
   {
     this.players = players;
   }
-
-  // public List getPlayersById(String playersId) {
-  //  return players;
-  // }
-
-
 }
