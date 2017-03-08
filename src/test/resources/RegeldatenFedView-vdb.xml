@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vdb name="RegeldatenFedView" version="1">
+    <description />
+    <connection-type>BY_VERSION</connection-type>
+    <property name="preview" value="false" />
+    <property name="validationDateTime" value="Wed Mar 01 16:42:48 CET 2017" />
+    <property name="validationVersion" value="8.12.5" />
+    <property name="deployment-name" value="RegeldatenFedView.vdb" />
+    <model name="Regeldaten" type="VIRTUAL" visible="true" path="/FI_POC_JDV_VisualDesigner/baselayer/Regeldaten.xmi">
+        <description />
+        <property name="checksum" value="4047748109" />
+        <property name="indexName" value="175456292.INDEX" />
+        <property name="modelUuid" value="mmuuid:a29ed4d6-1c49-4dd8-986f-36a36c9da696" />
+        <property name="modelClass" value="Relational" />
+        <property name="builtIn" value="false" />
+        <metadata type="DDL"><![CDATA[
+        
+            SET NAMESPACE 'http://teiid.org/rest' AS teiid_rest;
+            SET NAMESPACE 'http://www.teiid.org/ext/relational/2012' AS n1;
+            
+            CREATE VIRTUAL PROCEDURE RegeldatenProc(IN vorgangId string OPTIONS (UUID 'mmuuid:75da3f91-4248-48ce-b15f-555468989202', NAMEINSOURCE 'vorgangId'), 
+                IN vorgangsabschnitt string OPTIONS (UUID 'mmuuid:49a9c4f7-d03a-438b-8eb4-f4e61a144976', NAMEINSOURCE 'vorgangsabschnitt'), 
+                IN scoringergebnis string OPTIONS (UUID 'mmuuid:bb33a879-96a9-4c08-a152-9481531b3894', NAMEINSOURCE 'scoringergebnis'), 
+                IN schufaergebnisse string OPTIONS (UUID 'mmuuid:c1dc2668-c6f5-4045-9db5-c5982acac78b', NAMEINSOURCE 'schufaergebnisse')) 
+            RETURNS OPTIONS ('mmuuid:9089e85f-8587-4cbd-a788-a434b3e2aa03') 
+            TABLE (vorgangsID string(50) OPTIONS (UUID 'mmuuid:7c9813c1-478b-4ef1-82f7-bd108ca1f34d', NAMEINSOURCE 'vorgangsID', SEARCHABLE 'Searchable'), 
+            abschnittRang object OPTIONS (UUID 'mmuuid:d2d2fa32-abad-4de5-9d4a-da54ac30fc4e', NAMEINSOURCE 'abschnittRang', SEARCHABLE 'Searchable'), 
+            antragsteller object OPTIONS (UUID 'mmuuid:01c1398b-19ec-436a-85ca-48377517b0c6', NAMEINSOURCE 'antragsteller', SEARCHABLE 'Searchable'), 
+            fgst object OPTIONS (UUID 'mmuuid:6b7466b0-6753-424d-a7b3-b939a0bfc031', NAMEINSOURCE 'fgst', SEARCHABLE 'Searchable'), 
+            kapitaldienst object OPTIONS (UUID 'mmuuid:53fb4911-a51c-434c-95a0-c20e18573398', NAMEINSOURCE 'kapitaldienst', SEARCHABLE 'Searchable'), 
+            fbs object OPTIONS (UUID 'mmuuid:57cfc82d-fc71-458e-9b43-a01e72035d18', NAMEINSOURCE 'fbs', SEARCHABLE 'Searchable'), 
+            obligoGesamt object OPTIONS (UUID 'mmuuid:8a497db0-519a-4315-bba6-2619656f1aed', NAMEINSOURCE 'obligoGesamt', SEARCHABLE 'Searchable'), 
+            finanzierungsbedarf object OPTIONS (UUID 'mmuuid:51e0c320-4d02-4a5b-a513-08d0a23444d0', NAMEINSOURCE 'finanzierungsbedarf', SEARCHABLE 'Searchable'), 
+            anschaffHerstellKosten object OPTIONS (UUID 'mmuuid:6ad215f5-c0ff-485f-81e4-6d720f9e8afd', NAMEINSOURCE 'anschaffHerstellKosten', SEARCHABLE 'Searchable'), 
+            vortaxe object OPTIONS (UUID 'mmuuid:b81442fb-872f-40e8-838f-80edad07928c', NAMEINSOURCE 'vortaxe', SEARCHABLE 'Searchable'), 
+            vortaxeQualitaet string(50) OPTIONS (UUID 'mmuuid:0e21c4b1-f112-4f2b-a939-806fa8fb219e', NAMEINSOURCE 'vortaxeQualitaet', SEARCHABLE 'Searchable'), 
+            scoringnote object OPTIONS (UUID 'mmuuid:2c4c427c-d3b1-4dfc-af99-c80fdef1eaf2', NAMEINSOURCE 'scoringnote', SEARCHABLE 'Searchable'), 
+            verbuende object OPTIONS (UUID 'mmuuid:1d112055-73bf-4b46-bd3e-083fdfdfe1f1', NAMEINSOURCE 'verbuende', SEARCHABLE 'Searchable'), 
+            riesterWunsch string(50) OPTIONS (UUID 'mmuuid:e2d75fe5-5ae1-49f7-b5e2-e1b1dc4a879b', NAMEINSOURCE 'riesterWunsch', SEARCHABLE 'Searchable'), 
+            riesterNutzung string(50) OPTIONS (UUID 'mmuuid:5bcf21c4-4b6c-4af7-b348-8215e54e4eb2', NAMEINSOURCE 'riesterNutzung', SEARCHABLE 'Searchable'), 
+            schufaNutzungInstitut string(50) OPTIONS (UUID 'mmuuid:8554bdac-25b5-43a4-a5a5-4dfe801e75ae', NAMEINSOURCE 'schufaNutzungInstitut', SEARCHABLE 'Searchable'), 
+            ergebnisListe object OPTIONS (UUID 'mmuuid:51b696db-da85-4758-ba0b-5733de456c61', NAMEINSOURCE 'ergebnisListe', SEARCHABLE 'Searchable'), 
+            outputR string(50) OPTIONS (UUID 'mmuuid:5c62c3f3-6bf5-4580-8208-d626d9d9263f', NAMEINSOURCE 'outputR', SEARCHABLE 'Searchable'), 
+            simulation object OPTIONS (UUID 'mmuuid:3b7841c6-0e37-4e28-b042-7cc8e665704c', NAMEINSOURCE 'simulation', SEARCHABLE 'Searchable'), 
+            simulationLog string(50) OPTIONS (UUID 'mmuuid:a2a3bb07-9165-4552-99f1-4d31507e2279', NAMEINSOURCE 'simulationLog', SEARCHABLE 'Searchable'), 
+            hjid long OPTIONS (UUID 'mmuuid:1bb7bc2f-0212-4dfe-8ca3-8fa567608e82', NAMEINSOURCE 'hjid', SEARCHABLE 'Searchable'))
+            OPTIONS (UUID 'mmuuid:3cc6992b-5bb4-432e-86af-0f4aa0919bd5', NAMEINSOURCE 'RegeldatenProc', "teiid_rest:METHOD" ' ', 
+            "n1:aggregate" 'false', "n1:allows-distinct" 'false', "n1:allows-orderby" 'false', "n1:analytic" 'false', "n1:decomposable" 'false', 
+            "n1:deterministic" 'false', "n1:non-prepared" 'false', "n1:null-on-null" 'false', "n1:uses-distinct-rows" 'false', "n1:varargs" 'false')
+            AS
+            BEGIN
+                DECLARE string VARIABLES.vorgangsID;
+                DECLARE object VARIABLES.abschnittRang;
+                DECLARE object VARIABLES.antragsteller;
+                DECLARE object VARIABLES.fgst;
+                DECLARE object VARIABLES.kapitaldienst;
+                DECLARE object VARIABLES.fbs;
+                DECLARE object VARIABLES.obligoGesamt;
+                DECLARE object VARIABLES.finanzierungsbedarf;
+                DECLARE object VARIABLES.anschaffHerstellKosten;
+                DECLARE object VARIABLES.vortaxe;
+                DECLARE string VARIABLES.vortaxeQualitaet;
+                DECLARE object VARIABLES.scoringnote;
+                DECLARE object VARIABLES.verbuende;
+                DECLARE string VARIABLES.riesterWunsch;
+                DECLARE string VARIABLES.riesterNutzung;
+                DECLARE string VARIABLES.schufaNutzungInstitut;
+                DECLARE object VARIABLES.ergebnisListe;
+                DECLARE string VARIABLES.outputR;
+                DECLARE object VARIABLES.simulation;
+                DECLARE string VARIABLES.simulationLog;
+                DECLARE long VARIABLES.hjid;
+                BEGIN
+                    -- // Property: vorgangsID
+                    -- // UDF: dvkVorgang_liesVorgang
+                    VARIABLES.vorgangsID = (SELECT BO.gsprVgngId FROM OBJECTTABLE('bo_rows' PASSING dvkVorgang_liesVorgang(Regeldaten.RegeldatenProc.vorgangId) AS bo_rows COLUMNS gsprVgngId string 'bo_rows.gsprVgngId') AS BO);
+                    -- // Property: abschnittRang
+                    -- // UDF: dvkSvz_liesEintragAusSvz
+                    VARIABLES.abschnittRang = (SELECT ISVZ.rang FROM OBJECTTABLE('isvz_rows' PASSING dvkSvz_liesEintragAusSvz(Regeldaten.RegeldatenProc.vorgangsabschnitt) AS isvz_rows COLUMNS rang object 'isvz_rows.rang') AS ISVZ);
+                    -- // Main select.
+                    -- // Properties: all
+                    -- // UDF: regeldaten_getRegeldaten
+                    LOOP ON (SELECT OT.antragsteller AS antragsteller, OT.fgst AS fgst, OT.kapitaldienst AS kapitaldienst, OT.fbs AS fbs, OT.obligoGesamt AS obligoGesamt, OT.finanzierungsbedarf AS finanzierungsbedarf, OT.anschaffHerstellKosten AS anschaffHerstellKosten, OT.vortaxe AS vortaxe, OT.vortaxeQualitaet AS vortaxeQualitaet, OT.scoringnote AS scoringnote, OT.verbuende AS verbuende, OT.riesterWunsch AS riesterWunsch, OT.riesterNutzung AS riesterNutzung, OT.schufaNutzungInstitut AS schufaNutzungInstitut, OT.ergebnisListe AS ergebnisListe, OT.outputR AS outputR, OT.simulation AS simulation, OT.simulationLog AS simulationLog, OT.hjid AS hjid FROM OBJECTTABLE('reg_rows' PASSING regeldaten_getRegeldaten(Regeldaten.RegeldatenProc.vorgangId, Regeldaten.RegeldatenProc.vorgangsabschnitt, Regeldaten.RegeldatenProc.scoringergebnis, Regeldaten.RegeldatenProc.schufaergebnisse) AS reg_rows COLUMNS antragsteller object 'reg_rows.antragsteller', fgst object 'reg_rows.fgst', kapitaldienst object 'reg_rows.kapitaldienst', fbs object 'reg_rows.fbs', obligoGesamt object 'reg_rows.obligoGesamt', finanzierungsbedarf object 'reg_rows.finanzierungsbedarf', anschaffHerstellKosten object 'reg_rows.anschaffHerstellKosten', vortaxe object 'reg_rows.vortaxe', vortaxeQualitaet string 'reg_rows.vortaxeQualitaet', scoringnote object 'reg_rows.scoringnote', verbuende object 'reg_rows.verbuende', riesterWunsch string 'reg_rows.riesterWunsch', riesterNutzung string 'reg_rows.riesterNutzung', schufaNutzungInstitut string 'reg_rows.schufaNutzungInstitut', ergebnisListe object 'reg_rows.ergebnisListe', outputR string 'reg_rows.output', simulation object 'reg_rows.simulation', simulationLog string 'reg_rows.simulationLog', hjid long 'reg_rows.hjid') AS OT) AS regcursor
+                    BEGIN
+                        VARIABLES.antragsteller = regcursor.antragsteller;
+                        VARIABLES.fgst = regcursor.fgst;
+                        VARIABLES.kapitaldienst = regcursor.kapitaldienst;
+                        VARIABLES.fbs = regcursor.fbs;
+                        VARIABLES.obligoGesamt = regcursor.obligoGesamt;
+                        VARIABLES.finanzierungsbedarf = regcursor.finanzierungsbedarf;
+                        VARIABLES.anschaffHerstellKosten = regcursor.anschaffHerstellKosten;
+                        VARIABLES.vortaxe = regcursor.vortaxe;
+                        VARIABLES.vortaxeQualitaet = regcursor.vortaxeQualitaet;
+                        VARIABLES.scoringnote = regcursor.scoringnote;
+                        VARIABLES.verbuende = regcursor.verbuende;
+                        VARIABLES.riesterWunsch = regcursor.riesterWunsch;
+                        VARIABLES.riesterNutzung = regcursor.riesterNutzung;
+                        VARIABLES.schufaNutzungInstitut = regcursor.schufaNutzungInstitut;
+                        VARIABLES.ergebnisListe = regcursor.ergebnisListe;
+                        VARIABLES.outputR = regcursor.outputR;
+                        VARIABLES.simulation = regcursor.simulation;
+                        VARIABLES.simulationLog = regcursor.simulationLog;
+                        VARIABLES.hjid = regcursor.hjid;
+                    END
+                END
+                SELECT VARIABLES.vorgangsID, VARIABLES.abschnittRang, VARIABLES.antragsteller, VARIABLES.fgst, VARIABLES.kapitaldienst, VARIABLES.fbs, 
+                    VARIABLES.obligoGesamt, VARIABLES.finanzierungsbedarf, VARIABLES.anschaffHerstellKosten, VARIABLES.vortaxe, VARIABLES.vortaxeQualitaet, 
+                    VARIABLES.scoringnote, VARIABLES.verbuende, VARIABLES.riesterWunsch, VARIABLES.riesterNutzung, VARIABLES.schufaNutzungInstitut, 
+                    VARIABLES.ergebnisListe, VARIABLES.outputR, VARIABLES.simulation, VARIABLES.simulationLog, VARIABLES.hjid;
+            END;
+            
+            CREATE VIRTUAL FUNCTION regeldaten_getRegeldaten(vorgangIdFn object, vorgangsabschnitt object, scoringergebnis object, schufaergebnisse object) 
+                RETURNS OPTIONS (UUID 'tsid:fffffffc874db10-00000005') object
+                OPTIONS (UUID 'tsid:000000032069406-00000000', CATEGORY 'Regeldaten', JAVA_CLASS 'com.fi.poc.services.regeldaten.RegeldatenService', 
+            JAVA_METHOD 'getRegeldaten', "teiid_rest:METHOD" ' ', "n1:aggregate" 'false', "n1:allows-distinct" 'false', "n1:allows-orderby" 'false', 
+            "n1:analytic" 'false', "n1:decomposable" 'false', "n1:deterministic" 'true', "n1:function-category" 'function', 
+            "n1:java-class" 'com.fi.poc.services.regeldaten.RegeldatenService', "n1:java-method" 'getRegeldaten', "n1:non-prepared" 'false', "n1:null-on-null" 'false', 
+            "n1:uses-distinct-rows" 'false', "n1:varargs" 'false');
+        ]]></metadata>
+    </model>
+    <model name="BoGeschVorgangLesenData" type="VIRTUAL" visible="true"
+        path="/FI_POC_JDV_VisualDesigner/baselayer/BoGeschVorgangLesenData.xmi">
+        <description />
+        <property name="checksum" value="1738848319" />
+        <property name="indexName" value="3248598876.INDEX" />
+        <property name="modelUuid" value="mmuuid:280c65c5-a6a0-407c-a815-79c3e8b1c873" />
+        <property name="modelClass" value="Relational" />
+        <property name="builtIn" value="false" />
+        <metadata type="DDL"><![CDATA[
+            SET NAMESPACE 'http://teiid.org/rest' AS teiid_rest;
+            SET NAMESPACE 'http://www.teiid.org/ext/relational/2012' AS n1;
+
+            CREATE VIRTUAL FUNCTION dvkVorgang_liesVorgang(vorgangId object) RETURNS OPTIONS (UUID 'tsid:fffffffc874db10-00000002') object
+            OPTIONS (UUID 'tsid:00000003f15abfe-00000000', CATEGORY 'BoGeschVorgangLesenData', JAVA_CLASS 'com.fi.poc.services.dvkvorgang.DvkVorgangJdvService', JAVA_METHOD 'liesVorgang', 
+            "teiid_rest:METHOD" ' ', "n1:aggregate" 'false', "n1:allows-distinct" 'false', "n1:allows-orderby" 'false', "n1:analytic" 'false', 
+            "n1:decomposable" 'false', "n1:deterministic" 'true', "n1:function-category" 'function', "n1:java-class" 'com.fi.poc.services.dvkvorgang.DvkVorgangJdvService', 
+            "n1:java-method" 'liesVorgang', "n1:non-prepared" 'false', "n1:null-on-null" 'false', "n1:uses-distinct-rows" 'false', "n1:varargs" 'false');]]></metadata>
+    </model>
+    <model name="SvzEintrag" type="VIRTUAL" visible="true" path="/FI_POC_JDV_VisualDesigner/baselayer/SvzEintrag.xmi">
+        <description />
+        <property name="checksum" value="1310176181" />
+        <property name="indexName" value="3188583580.INDEX" />
+        <property name="modelUuid" value="mmuuid:6f40cf6e-e949-4e64-a057-1d43691dd315" />
+        <property name="modelClass" value="Relational" />
+        <property name="builtIn" value="false" />
+        <metadata type="DDL"><![CDATA[
+            SET NAMESPACE 'http://teiid.org/rest' AS teiid_rest;
+            SET NAMESPACE 'http://www.teiid.org/ext/relational/2012' AS n1;
+
+            CREATE VIRTUAL FUNCTION dvkSvz_liesEintragAusSvz(vorgangsabschnittIn string) RETURNS OPTIONS (UUID 'tsid:fffffffc874db10-00000002') object
+            OPTIONS (UUID 'tsid:fffffff99a5551d-00000000', CATEGORY 'SvzEintrag', JAVA_CLASS 'com.fi.poc.services.dvksvz.DvkSvzService', 
+            JAVA_METHOD 'liesEintragAusSvz', "teiid_rest:METHOD" ' ', "n1:aggregate" 'false', "n1:allows-distinct" 'false', "n1:allows-orderby" 'false', 
+            "n1:analytic" 'false', "n1:decomposable" 'false', "n1:deterministic" 'true', "n1:function-category" 'function', 
+            "n1:java-class" 'com.fi.poc.services.dvksvz.DvkSvzService', "n1:java-method" 'liesEintragAusSvz', "n1:non-prepared" 'false', 
+            "n1:null-on-null" 'true', "n1:uses-distinct-rows" 'false', "n1:varargs" 'false');]]></metadata>
+    </model>
+    <entry path="/lib/FI_POC_JDV_VisualDesigner-0.0.1-SNAPSHOT-jar-with-dependencies.jar">
+        <property name="checksum" value="1558968579" />
+    </entry>
